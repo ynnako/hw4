@@ -31,4 +31,17 @@ book_name[i]='\0';
 */
 return;
 }
+
+int getCourseGrade() const{
+	double hw_average = getHwAverage();
+	double hw_weigh = getHwWeigh();
+	int exam_grade = getExamGrade();
+	bool takef = isTakef_;
+	int course_grade=0;
+	course_grade=round((1-miashkal_hw_)*exam_grade_+ miashkal_hw_*hw_average);
+	if (takef) {
+		return course_grade;
+	}
+	return max(exam_grade,course_grade);
+		
 	
