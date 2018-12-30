@@ -8,6 +8,6 @@ class EE_Course :public Course {
 		EE_Course(int course_number,char* p_course_name,int num_of_exercises,double miashkal_hw);
 		int getFctor()const;
 		int setFactor(int factor);
-		int getCourseGrade const();
+		int getCourseGrade() const;
 		
 }	

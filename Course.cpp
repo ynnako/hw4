@@ -6,8 +6,8 @@
 
 static char* p_course_name1=NULL;
 
-Course :: Course(int course_number,char* p_course_name,int num_of_exercises,double miashkal_hw){
-	course_number_(course_number),num_of_exercises_(num_of_exercises),miashkal_hw_(miashkal_hw)
+Course :: Course(int course_number,char* p_course_name,int num_of_exercises,double weight_hw){
+	course_number_(course_number),num_of_exercises_(num_of_exercises),weight_hw_(weight_hw)
 	{
 		stpcpy(course_name_,p_course_name);
 	}
@@ -41,11 +41,11 @@ int Course::getHwNum() const{
 	return num_of_exercises_;
 }
 
-double Course::getHwWeigh const(){
-	return miashkal_hw_;
+double Course::getHwWeigh ()const{
+	return weight_hw_;
 }
 
-double Course::getHwAverage const(){
+double Course::getHwAverage ()const{
 	int i;
 	int sum=0;
 	double average=0;
@@ -56,12 +56,12 @@ double Course::getHwAverage const(){
 	return average;
 }
 
-int Course::getCourseGrade const(){
+int Course::getCourseGrade() const{
 	
 	double hw_average=getHwAverage();
 	int course_grade=0;
 	
-	course_grade=round((1-miashkal_hw_)*exam_grade_+ miashkal_hw_*hw_average);
+	course_grade=round((1-weight_hw_)*exam_grade_+ weight_hw_*hw_average);
 	return 	course_grade;
 }	
 	
