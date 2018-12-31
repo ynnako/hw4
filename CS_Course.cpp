@@ -7,11 +7,16 @@
 
 
 
-CS_Course :: CS_Course(int course_number,char* p_course_name,int num_of_hw,float miashkal_hw,bool isTakef,char* p_book_name){
-	Course(course_number,p_course_name,num_of_hw,miashkal_hw),isTakef_(isTakef) 
+CS_Course :: CS_Course(int course_number, char* p_course_name, int num_of_exercises, float weight_hw, bool isTakef, char* p_book_name) :
+	Course(course_number,p_course_name, num_of_exercises, weight_hw),isTakef_(isTakef)
 	{
-		stpcpy(book_name,p_book_name);
-	}	
+	int len_book_name = strlen(p_book_name);
+	char* p_2_book_name = new char[len_book_name + 1];
+	strcpy(p_2_book_name,p_book_name);
+	p_book_name_ = p_2_book_name;
+	};
+CS_Course :: ~CS_Course() {
+	delete[] p_book_name_;
 }
 
 bool CS_Course::setTakef(bool isTakef){
@@ -19,29 +24,24 @@ bool CS_Course::setTakef(bool isTakef){
 	return 1;
 }
 	
-void setBook(char* p_book_name){
-	strcpy(book_name,p_book_name);
-	/*
-	int i=0;
-	while(*p_book_name!='\0'){
-		book_name[i]=*(p_book_name+i);
-		i++;
+void  CS_Course::setBook(char* p_book_name){
+	if (p_book_name_ != NULL) {
+		delete[] p_book_name_;
 	}
-book_name[i]='\0';
-*/
+	int len_book_name = strlen(p_book_name);
+	char* p_2_book_name = new char[len_book_name + 1];
+	strcpy(p_book_name_,p_book_name);
 return;
 }
 
-int getCourseGrade() const{
+int CS_Course::getCourseGrade() const{
 	double hw_average = getHwAverage();
 	double hw_weigh = getHwWeigh();
 	int exam_grade = getExamGrade();
 	bool takef = isTakef_;
 	int course_grade=0;
-	course_grade=round((1-miashkal_hw_)*exam_grade_+ miashkal_hw_*hw_average);
-	if (takef) {
-		return course_grade;
-	}
-	return max(exam_grade,course_grade);
+	course_grade=round((1- hw_weigh)*exam_grade+ hw_weigh *hw_average);
+	if (takef) return course_grade;
+	return exam_grade > course_grade ? exam_grade : course_grade;
 		
 	

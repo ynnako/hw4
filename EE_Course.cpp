@@ -4,12 +4,13 @@
 #include <string.h>
 #include "EE_Course.h"
 
-EE_Course :: EE_Course(int course_number,char* p_course_name,int num_of_hw,float miashkal_hw){
-	Course(course_number,p_course_name,num_of_hw,miashkal_hw),factor_(0);
-	
-}
+EE_Course::EE_Course(int course_number, char* p_course_name, int num_of_exercises, double weight_hw) :
 
-	int EE_Cours::getFctor()const{
+	Course(course_number, p_course_name, num_of_exercises, weight_hw), factor_(0) {};
+
+
+
+	int EE_Course::getFctor()const{
 		return factor_;
 	}
 	
@@ -20,7 +21,7 @@ EE_Course :: EE_Course(int course_number,char* p_course_name,int num_of_hw,float
 		
 	
 	
-	int EE_Course::getCourseGrade const(){
+	int EE_Course::getCourseGrade ()const{
 		int grade_before_factor= Course::getCourseGrade();
 		int grade_after_factor=grade_before_factor+factor_;
 		return grade_after_factor	> MAX_GRADE ? MAX_GRADE : grade_after_factor;

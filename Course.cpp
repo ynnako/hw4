@@ -4,27 +4,34 @@
 #include <string.h>
 #include "Course.h"
 
-static char* p_course_name1=NULL;
 
-Course :: Course(int course_number,char* p_course_name,int num_of_exercises,double weight_hw){
+
+Course :: Course(int course_number,char* p_course_name,int num_of_exercises,double weight_hw):
 	course_number_(course_number),num_of_exercises_(num_of_exercises),weight_hw_(weight_hw)
 	{
-		stpcpy(course_name_,p_course_name);
+	int len_course_name = strlen(p_course_name);
+	char* p_2_course_name = new char[len_course_name + 1];
+	strcpy(p_2_course_name,p_course_name);
+	int* p_grades_hw_array = new int[num_of_exercises + 1];
+	p_grades_hw_array_ = p_grades_hw_array;
+	p_course_name_ = p_2_course_name;
 	}
+
+Course::~Course() {
+	delete[] p_course_name_;
+	delete[] p_grades_hw_array_;
 }
 
 int Course::getNum() const {
 	
 	return course_number_;
 }
-int Course::getName() const {
-	
-	if (p_course_name!=NULL) return p_course_name1;
-	int name_len=strlen(course_name_);
-	char* p_course_name_tmp=new char[name_len+1];
-	stpcpy(p_course_name_tmp,course_name_);
-	p_course_name1=p_course_name_tmp;
-	return p_course_name_tmp1;
+char* Course::getName() const  {
+	int len_course_name = strlen(p_course_name_);
+	char* p_2_course_name = new char[len_course_name + 1];
+	strcpy(p_2_course_name, p_course_name_);
+	return p_2_course_name;
+	/*need to check who free that*/
 }
 
 int Course::getExamGrade()const{
@@ -33,8 +40,8 @@ int Course::getExamGrade()const{
 
 int Course::getHwGrade(int num_of_exercise) const{
 	
-	if ( num_of_exercise<0 || num_of_exercise>= num_of_exercises_) return -1/*need to ask*/
-	return grades_hw_array[num_of_exercise];
+	if (num_of_exercise < 0 || num_of_exercise >= num_of_exercises_) return -1;/*need to ask*/
+	return p_grades_hw_array_[num_of_exercise];
 }
 
 int Course::getHwNum() const{
@@ -49,10 +56,10 @@ double Course::getHwAverage ()const{
 	int i;
 	int sum=0;
 	double average=0;
-	for(i=0;i<num_of_hw_;i++){
-		sum += grades_hw_array[i];
+	for(i=0;i< num_of_exercises_;i++){
+		sum += p_grades_hw_array_[i];
 	}
-	average=sum/num_of_hw_;
+	average=sum/ num_of_exercises_;
 	return average;
 }
 
@@ -65,16 +72,18 @@ int Course::getCourseGrade() const{
 	return 	course_grade;
 }	
 	
-bool Course::setExamGrade(int exam_grade){
-	if (exam_grade>100 || exam_grade<0) return 0;
-	exam_grade_=exam_grade;
-	return 1;
-	
+bool Course::setExamGrade(int exam_grade) {
+	if (exam_grade > 100 || exam_grade < 0) return false;
+	exam_grade_ = exam_grade;
+	return true;
+}
+
 bool Course::setHwGrade(int exercise_num,int exercise_grade){
-if (exercise_num<0 || exercise_num>num_of_exercises_ ) return 0;
-if (exercise_grade>100 || exercise_grade<0) 					 return 0;
-grades_hw_array_[exercise_num]=exercise_grade;
-return 1;
+if (exercise_num<0 || exercise_num>num_of_exercises_ ) return false;
+if (exercise_grade>100 || exercise_grade<0) 		   return false;
+p_grades_hw_array_[exercise_num]=exercise_grade;
+
+return true;
 }
 	
 	

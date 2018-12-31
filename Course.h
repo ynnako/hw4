@@ -1,19 +1,21 @@
+#ifndef _COURSE_H_
+#define _COURSE_H_
 
-
-
+#include "Proj.h"
 
 class Course {
 	
 	private:
 		int course_number_;
-		char course_name_[1000];/*need to change*/
+		char* p_course_name_;
 		int num_of_exercises_;
 		double weight_hw_;
 		int exam_grade_;
-		int grades_hw_array_[1000];/*need to change*/
+		int* p_grades_hw_array_;
 	
 	public:
 		Course(int course_number,char* p_course_name,int num_of_exercises,double weight_hw);
+		~Course();
 		int getNum() const;
 		char* getName() const;
 		int getExamGrade() const;
@@ -22,10 +24,10 @@ class Course {
 		double getHwWeigh ()const;
 		double getHwAverage() const;
 		int getCourseGrade ()const;
-		void serExamGrade(int grade);
-		bool setHwGrade(int mispar_targil,int grade);
+		bool setExamGrade(int exam_grade);
+		bool setHwGrade(int exercise_num, int exercise_grade);
 }	;
 		
-	
+#endif
 	
 	
