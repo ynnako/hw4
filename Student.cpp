@@ -5,8 +5,9 @@
 #include <iostream>
 #include <string.h>
 using std::cout;
+
 Student::Student(int person_id, char* p_person_name):
-	Person( person_id,  p_person_name){}
+	Person(person_id, p_person_name), num_of_ee_courses_(0), num_of_cs_courses_(0), p_ee_course_array_{ nullptr }, p_cs_course_array_{ nullptr }{}
 
 int Student::getCourseCnt() const{
 	return num_of_ee_courses_ + num_of_cs_courses_;
