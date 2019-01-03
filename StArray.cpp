@@ -94,5 +94,7 @@ void StArray::resetStArray() {
 	int i;
 	for (i = 0; i < num_of_students; i++) {
 		delete[] student_db[i];
+		student_db[i] = nullptr;/*need to check that*/
 	}
+	
 }
