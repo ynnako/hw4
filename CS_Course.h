@@ -7,10 +7,12 @@ class CS_Course :public Course {
 		int isTakef_;
 		char* p_book_name_;
 	public:
-		CS_Course(int course_number, char* p_course_name, int num_of_exercises, float weight_hw, bool isTakef, char* p_book_name);
+		CS_Course(int course_number, char* p_course_name, int num_of_exercises, double weight_hw, bool isTakef, char* p_book_name);
 		~CS_Course();
 		bool setTakef(bool isTakef);
 		int getCourseGrade() const;
 		void setBook(char* p_book_name);
+		bool isTakef()const;
+		char* getBook() const;
 };
 #endif	

@@ -8,10 +8,10 @@
 
 class Student : public Person {
 private:
-	EE_Course* p_ee_course_array_[MAX_COURSE_NUM];
-	CS_Course* p_cs_course_array_[MAX_COURSE_NUM];
-	int ee_course_num_;
-	int cs_course_num_;
+	EE_Course* p_ee_course_array_[MAX_COURSE_NUM] = { nullptr } ;
+	CS_Course* p_cs_course_array_[MAX_COURSE_NUM] = { nullptr } ;
+	int num_of_ee_courses_;
+	int num_of_cs_courses_;
 
 public:
 	Student(int person_id, char* p_person_name);
