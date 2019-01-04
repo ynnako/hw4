@@ -16,30 +16,30 @@ int find_student_indx (int student_id , int num_of_students, Student *student_db
 
 bool StArray::addStudent(int student_id, char* p_student_name)
 {
-    if (num_of_students >= MAX_STUDENT_NUM || p_student_name == nullptr || find_student_indx(student_id , num_of_students , student_db) < MAX_STUDENT_NUM ) return FALSE;
+    if (num_of_students >= MAX_STUDENT_NUM || p_student_name == nullptr || find_student_indx(student_id , num_of_students , student_db) < MAX_STUDENT_NUM ) return false;
     Student* new_student = new Student(student_id , p_student_name);
     student_db[num_of_students] = new_student;
     num_of_students++;
-    return TRUE;
+    return true;
 }
 
 
 bool StArray::addEE_Course(int student_id, int course_num, char *p_course_name, int num_of_exercises, double exercise_weight)
 {
     int student_indx = find_student_indx(student_id , num_of_students , student_db);
-    if ( p_course_name == nullptr || num_of_exercises < 0 || ( exercise_weight < 0 || exercise_weight > 1) || student_indx == MAX_STUDENT_NUM) return FALSE;
+    if ( p_course_name == nullptr || num_of_exercises < 0 || ( exercise_weight < 0 || exercise_weight > 1) || student_indx == MAX_STUDENT_NUM) return false;
     EE_Course new_course(course_num , p_course_name , num_of_exercises , exercise_weight);
-    if ( student_db[student_indx]->addEE_Course(&new_course) == 0 ) return FALSE;
-    return TRUE;
+    if ( student_db[student_indx]->addEE_Course(&new_course) == 0 ) return false;
+    return true;
 }
 
 bool StArray::addCS_Course(int student_id, int course_num, char *p_course_name, int num_of_exercises, double exercise_weight, bool takef, char *p_book_name)
 {
     int student_indx = find_student_indx(student_id , num_of_students , student_db);
-    if ( p_course_name == nullptr || num_of_exercises < 0 || ( exercise_weight < 0 || exercise_weight > 1) || p_book_name == nullptr || student_indx == MAX_STUDENT_NUM) return FALSE;
+    if ( p_course_name == nullptr || num_of_exercises < 0 || ( exercise_weight < 0 || exercise_weight > 1) || p_book_name == nullptr || student_indx == MAX_STUDENT_NUM) return false;
     CS_Course new_course(course_num , p_course_name , num_of_exercises , exercise_weight , takef , p_book_name);
-    if ( student_db[student_indx]->addCS_Course(&new_course) == 0 ) return FALSE;
-    return TRUE;
+    if ( student_db[student_indx]->addCS_Course(&new_course) == 0 ) return false;
+    return true;
 }
 
 bool StArray::setHwGrade(int student_id, int course_num, int exercise_num, int exercise_grade) {

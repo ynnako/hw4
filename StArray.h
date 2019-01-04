@@ -20,5 +20,5 @@ class StArray
     bool printStudent(int student_id) ;/*change to not const because find indx is not const*/
     void printAll() ;
     void resetStArray();
-}
+};
 #endif

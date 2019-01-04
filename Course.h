@@ -1,7 +1,7 @@
 #ifndef _COURSE_H_
 #define _COURSE_H_
 
-#include "Proj.h"
+#include "Proj.h";
 
 class Course {
 	
