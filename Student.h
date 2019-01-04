@@ -4,7 +4,7 @@
 #include "Person.h"
 #include "CS_Course.h"
 #include "EE_Course.h"
-
+#include "Proj.h"
 
 class Student : public Person {
 private:

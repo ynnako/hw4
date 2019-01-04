@@ -1,7 +1,7 @@
 #ifndef _STARRAY_H_
 #define _STARRAY_H_
 #include "Student.h"
-
+#include "Proj.h"
 class StArray
 {
   private:

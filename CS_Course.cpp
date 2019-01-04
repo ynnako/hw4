@@ -23,14 +23,16 @@ bool CS_Course::setTakef(bool isTakef){
 	isTakef_=isTakef;
 	return 1;
 }
-	
+
 void  CS_Course::setBook(char* p_book_name){
 	if (p_book_name_ != NULL) {
 		delete[] p_book_name_;
 	}
 	int len_book_name = strlen(p_book_name);
 	char* p_2_book_name = new char[len_book_name + 1];
-	strcpy(p_book_name_,p_book_name);
+	strcpy(p_2_book_name,p_book_name);
+	p_book_name_=p_2_book_name;
+
 return;
 }
 
@@ -40,7 +42,8 @@ int CS_Course::getCourseGrade() const {
 	int exam_grade = getExamGrade();
 	bool takef = isTakef_;
 	int course_grade = 0;
-	course_grade = round((1 - hw_weigh)*exam_grade + hw_weigh * hw_average);
+	//course_grade = round((1 - hw_weigh)*exam_grade + hw_weigh * hw_average);/*remove round*/
+	course_grade = (1 - hw_weigh)*exam_grade + hw_weigh * hw_average;
 	if (takef) return course_grade;
 	return exam_grade > course_grade ? exam_grade : course_grade;
 }

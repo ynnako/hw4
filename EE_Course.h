@@ -4,6 +4,7 @@
 
 #include "Course.h"
 #define MAX_GRADE 100
+
 class EE_Course :public Course {
 	private:
 		int factor_;

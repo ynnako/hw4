@@ -1,4 +1,5 @@
 #include "StArray.h"
+#include "Proj.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <iostream>
@@ -9,9 +10,13 @@ int find_student_indx (int student_id , int num_of_students, Student *student_db
     if (num_of_students >= MAX_STUDENT_NUM ) return MAX_STUDENT_NUM;
     for( int i = 0 ; i < num_of_students ; i++)
     {
-        if (student_db[i]->getID == student_id) return i;
+        if (student_db[i]->getID() == student_id) return i;
     }
     return MAX_STUDENT_NUM;
+}
+
+StArray::~StArray()
+{
 }
 
 bool StArray::addStudent(int student_id, char* p_student_name)
@@ -81,13 +86,13 @@ bool StArray::printStudent(int student_id)  {
 
 	int student_indx = find_student_indx(student_id, num_of_students, student_db);
 	if (student_indx == MAX_STUDENT_NUM) return 0;
-	student_db[student_indx]->print;
+	student_db[student_indx]->print();
 	return 1;
 }
 void StArray::printAll()  {
 	int i;
 	for (i = 0; i < num_of_students; i++) {
-		printStudent(student_db[i]->getID);
+		printStudent(student_db[i]->getID());
 	}
 }
 void StArray::resetStArray() {
@@ -96,5 +101,5 @@ void StArray::resetStArray() {
 		delete[] student_db[i];
 		student_db[i] = nullptr;/*need to check that*/
 	}
-	
+
 }

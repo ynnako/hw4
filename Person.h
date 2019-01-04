@@ -11,7 +11,6 @@ public:
 	Person(int person_id,char* person_name);
 	~Person();
 	int getID()const;
-	char* getName()const;
-	
-}	
+	char* getName()const;	
+};
 #endif	
