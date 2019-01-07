@@ -9,7 +9,7 @@ class StArray
     int num_of_students;
 
   public:
-    StArray() : num_of_students(0), student_db{nullptr} {};
+	StArray();
     ~StArray();
     bool addStudent(int student_id, char* p_student_name);
     bool addEE_Course(int student_id, int course_num, char *p_course_name, int num_of_exercises, double exercise_weight);

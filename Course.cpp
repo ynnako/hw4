@@ -13,9 +13,12 @@ Course :: Course(int course_number,char* p_course_name,int num_of_exercises,doub
 	char* p_2_course_name = new char[len_course_name + 1];
 	strcpy(p_2_course_name,p_course_name);
 	int* p_grades_hw_array = new int[num_of_exercises + 1];
+	for (int i = 0; i < num_of_exercises; i++) {
+		p_grades_hw_array[i] = 0;
+	}
 	p_grades_hw_array_ = p_grades_hw_array;
 	p_course_name_ = p_2_course_name;
-	}
+};
 
 Course::~Course() {
 	delete[] p_course_name_;
@@ -53,9 +56,11 @@ double Course::getHwWeigh ()const{
 }
 
 double Course::getHwAverage ()const{
+	double average = 0;
+	if(num_of_exercises_==0) return average;
 	int i;
 	int sum=0;
-	double average=0;
+
 	for(i=0;i< num_of_exercises_;i++){
 		sum += p_grades_hw_array_[i];
 	}
@@ -66,11 +71,11 @@ double Course::getHwAverage ()const{
 int Course::getCourseGrade() const{
 
 	double hw_average=getHwAverage();
-	int course_grade=0;
+	double course_grade=0;
 
 	//course_grade=round((1-weight_hw_)*exam_grade_+ weight_hw_*hw_average);/*remove round need to return*/
-	course_grade=(1-weight_hw_)*exam_grade_+ weight_hw_*hw_average;
-	return 	course_grade;
+	course_grade=(1-weight_hw_)*exam_grade_+ weight_hw_*hw_average +0.5;
+	return 	(int)course_grade;
 }
 
 bool Course::setExamGrade(int exam_grade) {

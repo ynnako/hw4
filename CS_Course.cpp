@@ -41,11 +41,11 @@ int CS_Course::getCourseGrade() const {
 	double hw_weigh = getHwWeigh();
 	int exam_grade = getExamGrade();
 	bool takef = isTakef_;
-	int course_grade = 0;
+	double course_grade = 0;
 	//course_grade = round((1 - hw_weigh)*exam_grade + hw_weigh * hw_average);/*remove round*/
-	course_grade = (1 - hw_weigh)*exam_grade + hw_weigh * hw_average;
-	if (takef) return course_grade;
-	return exam_grade > course_grade ? exam_grade : course_grade;
+	course_grade = (1 - hw_weigh)*exam_grade + hw_weigh * hw_average +0.5;
+	if (takef) return (int)course_grade;
+	return exam_grade > course_grade ? exam_grade : (int)course_grade;
 }
 
 bool CS_Course:: isTakef() const {

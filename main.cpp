@@ -2,8 +2,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #endif // !_CRT_SECURE_NO_WARNINGS
 
-#include "Proj.H"
-#include "StArray.H"
+#include "Proj.h"
+#include "StArray.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <iostream>
