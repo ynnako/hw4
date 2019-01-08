@@ -31,11 +31,13 @@ int first_free_pointer(Course* first_array_pointer[]) {
 	}
 	return -1;
 }
+
+
 bool Student::addEE_Course(EE_Course* p_ee_course) {
 	if (p_ee_course == NULL) return 0;
 	int first_free_pointer_ = first_free_pointer((Course**)p_ee_course_array_);
-	char* p_ee_course_name = p_ee_course->getName();
 	if ( course_already_exist(p_ee_course, (Course**)p_ee_course_array_) == 1 || first_free_pointer_==-1)return false;
+	char* p_ee_course_name = p_ee_course->getName();
 	p_ee_course_array_[first_free_pointer_]=new EE_Course(p_ee_course->getNum(), p_ee_course_name, p_ee_course->getHwNum(), p_ee_course->getHwWeigh());
 	p_ee_course_array_[first_free_pointer_]->setExamGrade(p_ee_course->getExamGrade());/*exam grade*/
 	p_ee_course_array_[first_free_pointer_]->setFactor(p_ee_course->getFctor());/*factor*/
@@ -104,7 +106,6 @@ int Student::getAvg()  const {
 			sum += p_ee_course_array_[i]->getCourseGrade();
 		}
 	}
-	//avg = round(sum / getCourseCnt());
 	avg = 0.5+(sum / getCourseCnt());
 	return (int)avg;
 }
@@ -128,6 +129,7 @@ bool Student::rem_Course(int course_num) {
 	}
 	return 0;
 }
+
 void Student::print() const {
 	char* p_student_name = getName();
 	int i;
@@ -135,11 +137,11 @@ void Student::print() const {
 	cout << "Student ID: " << getID() << "\n";
 	cout << "Average grade: " << getAvg()  << "\n";
 	cout << "\n";
-	cout << "EE courses: " << "\n";
+	cout << "EE courses:" << "\n";
 	for (i = 0; i < MAX_COURSE_NUM; i++) {
 		if (p_ee_course_array_[i] != NULL) {
 			char* p_course_name = p_ee_course_array_[i]->getName();
-			cout << p_ee_course_array_[i]->getNum() << " " << p_course_name <<":" << " " << p_ee_course_array_[i]->getCourseGrade() << "\n";
+			cout << p_ee_course_array_[i]->getNum() << " " << p_course_name <<": " << p_ee_course_array_[i]->getCourseGrade() << "\n";
 			delete[] p_course_name;
 		}
 	}
@@ -148,7 +150,7 @@ void Student::print() const {
 	for (i = 0; i < MAX_COURSE_NUM; i++) {
 		if (p_cs_course_array_[i] != NULL) {
 			char* p_course_name = p_cs_course_array_[i]->getName();
-			cout << p_cs_course_array_[i]->getNum() << " " << p_course_name << ":" << " " <<  p_cs_course_array_[i]->getCourseGrade() << "\n";
+			cout << p_cs_course_array_[i]->getNum() << " " << p_course_name << ": " <<  p_cs_course_array_[i]->getCourseGrade() << "\n";
 			delete[] p_course_name;
 		}
 	}

@@ -14,12 +14,11 @@ EE_Course::EE_Course(int course_number, char* p_course_name, int num_of_exercise
 		return factor_;
 	}
 	
-		int EE_Course:: setFactor(int factor){
-			factor_=factor;
-			return 1;
-		}
+	int EE_Course:: setFactor(int factor){
+		factor_=factor;
+		return 1;
+	}
 		
-	
 	
 	int EE_Course::getCourseGrade ()const{
 		int grade_before_factor= Course::getCourseGrade();

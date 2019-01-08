@@ -89,7 +89,7 @@ bool StArray::setFactor(int course_num, int factor_val) {
 		p_ee_course = student_db[i]->getEE_Course(course_num);
 		if (p_ee_course == NULL) continue;
 		p_ee_course->setFactor(factor_val);
-		num_students++;/*ask yonatan*/
+		num_students++;
 	}
 	return num_students > 0 ? 1 : 0;
 }

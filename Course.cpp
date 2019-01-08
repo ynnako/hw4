@@ -29,12 +29,13 @@ int Course::getNum() const {
 
 	return course_number_;
 }
+
 char* Course::getName() const  {
 	int len_course_name = strlen(p_course_name_);
 	char* p_2_course_name = new char[len_course_name + 1];
 	strcpy(p_2_course_name, p_course_name_);
 	return p_2_course_name;
-	/*need to check who free that*/
+	
 }
 
 int Course::getExamGrade()const{
@@ -43,7 +44,7 @@ int Course::getExamGrade()const{
 
 int Course::getHwGrade(int num_of_exercise) const{
 
-	if (num_of_exercise < 0 || num_of_exercise >= num_of_exercises_) return -1;/*need to ask*/
+	if (num_of_exercise < 0 || num_of_exercise >= num_of_exercises_) return 0;
 	return p_grades_hw_array_[num_of_exercise];
 }
 
@@ -72,8 +73,6 @@ int Course::getCourseGrade() const{
 
 	double hw_average=getHwAverage();
 	double course_grade=0;
-
-	//course_grade=round((1-weight_hw_)*exam_grade_+ weight_hw_*hw_average);/*remove round need to return*/
 	course_grade=(1-weight_hw_)*exam_grade_+ weight_hw_*hw_average +0.5;
 	return 	(int)course_grade;
 }
