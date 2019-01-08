@@ -6,7 +6,12 @@
 #include "CS_Course.h"
 
 
-
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 CS_Course :: CS_Course(int course_number, char* p_course_name, int num_of_exercises, double weight_hw, bool isTakef, char* p_book_name) :
 	Course(course_number,p_course_name, num_of_exercises, weight_hw),isTakef_(isTakef)
 	{
@@ -15,15 +20,34 @@ CS_Course :: CS_Course(int course_number, char* p_course_name, int num_of_exerci
 	strcpy(p_2_book_name,p_book_name);
 	p_book_name_ = p_2_book_name;
 	};
+
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 CS_Course :: ~CS_Course() {
 	delete[] p_book_name_;
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 bool CS_Course::setTakef(bool isTakef){
 	isTakef_=isTakef;
 	return 1;
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 void  CS_Course::setBook(char* p_book_name){
 	if (p_book_name_ != NULL) {
 		delete[] p_book_name_;
@@ -36,6 +60,12 @@ void  CS_Course::setBook(char* p_book_name){
 return;
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 int CS_Course::getCourseGrade() const {
 	double hw_average = getHwAverage();
 	double hw_weigh = getHwWeigh();
@@ -47,10 +77,22 @@ int CS_Course::getCourseGrade() const {
 	return exam_grade > course_grade ? exam_grade : (int)course_grade;
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 bool CS_Course:: isTakef() const {
 	return isTakef_;
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 char* CS_Course::getBook() const {
 	int len_book_name = strlen(p_book_name_);
 	char* p_2_book_name = new char[len_book_name + 1];

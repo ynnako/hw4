@@ -6,13 +6,32 @@
 #include <string.h>
 using std::cout;
 
+
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 Student::Student(int person_id, char* p_person_name):
 	Person(person_id, p_person_name), num_of_ee_courses_(0), num_of_cs_courses_(0), p_ee_course_array_{ NULL }, p_cs_course_array_{ NULL }{}
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 int Student::getCourseCnt() const{
 	return num_of_ee_courses_ + num_of_cs_courses_;
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 int course_already_exist(Course* p_new_course,Course* p_exist_cours[] ) {
 	int i ;
 
@@ -24,6 +43,12 @@ int course_already_exist(Course* p_new_course,Course* p_exist_cours[] ) {
 
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 int first_free_pointer(Course* first_array_pointer[]) {
 	int i ;
 	for (i = 0; i < MAX_COURSE_NUM; i++) {
@@ -32,7 +57,12 @@ int first_free_pointer(Course* first_array_pointer[]) {
 	return -1;
 }
 
-
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 bool Student::addEE_Course(EE_Course* p_ee_course) {
 	if (p_ee_course == NULL) return 0;
 	int first_free_pointer_ = first_free_pointer((Course**)p_ee_course_array_);
@@ -51,6 +81,12 @@ bool Student::addEE_Course(EE_Course* p_ee_course) {
 	return true;
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 bool Student::addCS_Course(CS_Course* p_cs_course) {
 	if (p_cs_course == NULL) return 0;
 	int first_free_pointer_ = first_free_pointer((Course**)p_cs_course_array_);
@@ -69,7 +105,12 @@ bool Student::addCS_Course(CS_Course* p_cs_course) {
 	return true;
 }
 
-
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 EE_Course* Student::getEE_Course(int ee_course_num) {
 	int i;
 	for (i = 0; i < MAX_COURSE_NUM; i++) {
@@ -79,6 +120,12 @@ EE_Course* Student::getEE_Course(int ee_course_num) {
 	return NULL;
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 CS_Course* Student::getCS_Course(int cs_course_num) {
 	int i ;
 	for(i=0;i<MAX_COURSE_NUM;i++) {
@@ -91,6 +138,12 @@ CS_Course* Student::getCS_Course(int cs_course_num) {
 	return NULL;
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 int Student::getAvg()  const {
 	int i;
 	double avg = 0,sum = 0;
@@ -109,6 +162,13 @@ int Student::getAvg()  const {
 	avg = 0.5+(sum / getCourseCnt());
 	return (int)avg;
 }
+
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 bool Student::rem_Course(int course_num) {
 	int i;
 	for (i = 0; i < MAX_COURSE_NUM; i++) {
@@ -130,6 +190,12 @@ bool Student::rem_Course(int course_num) {
 	return 0;
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 void Student::print() const {
 	char* p_student_name = getName();
 	int i;

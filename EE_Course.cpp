@@ -4,22 +4,45 @@
 #include <string.h>
 #include "EE_Course.h"
 
+
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 EE_Course::EE_Course(int course_number, char* p_course_name, int num_of_exercises, double weight_hw) :
 
 	Course(course_number, p_course_name, num_of_exercises, weight_hw), factor_(0) {};
 
 
-
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 	int EE_Course::getFctor()const{
 		return factor_;
 	}
 	
+/*
+  Function: 
+  Description:
+  Parameters:
+  Return value: 
+*/
 	int EE_Course:: setFactor(int factor){
 		factor_=factor;
 		return 1;
 	}
 		
-	
+/*
+  Function: 
+  Description:
+  Parameters:
+  Return value: 
+*/	
 	int EE_Course::getCourseGrade ()const{
 		int grade_before_factor= Course::getCourseGrade();
 		int grade_after_factor=grade_before_factor+factor_;

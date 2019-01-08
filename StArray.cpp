@@ -6,6 +6,14 @@
 #include <string.h>
 using std::cout;
 
+
+
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 int find_student_indx (int student_id , int num_of_students, Student *student_db[])
 {
     if (num_of_students >= MAX_STUDENT_NUM ) return MAX_STUDENT_NUM;
@@ -17,6 +25,12 @@ int find_student_indx (int student_id , int num_of_students, Student *student_db
     return MAX_STUDENT_NUM;
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 StArray::StArray() :
 	num_of_students(0)
 {
@@ -25,10 +39,22 @@ StArray::StArray() :
 	}
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 StArray::~StArray()
 {
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 bool StArray::addStudent(int student_id, char* p_student_name)
 {
     if (num_of_students >= MAX_STUDENT_NUM || p_student_name == NULL || find_student_indx(student_id , num_of_students , student_db) < MAX_STUDENT_NUM ) return false;
@@ -38,7 +64,12 @@ bool StArray::addStudent(int student_id, char* p_student_name)
     return true;
 }
 
-
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 bool StArray::addEE_Course(int student_id, int course_num, char *p_course_name, int num_of_exercises, double exercise_weight)
 {
     int student_indx = find_student_indx(student_id , num_of_students , student_db);
@@ -48,6 +79,12 @@ bool StArray::addEE_Course(int student_id, int course_num, char *p_course_name, 
     return true;
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 bool StArray::addCS_Course(int student_id, int course_num, char *p_course_name, int num_of_exercises, double exercise_weight, bool takef, char *p_book_name)
 {
     int student_indx = find_student_indx(student_id , num_of_students , student_db);
@@ -57,6 +94,12 @@ bool StArray::addCS_Course(int student_id, int course_num, char *p_course_name, 
     return true;
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 bool StArray::setHwGrade(int student_id, int course_num, int exercise_num, int exercise_grade) {
 	int student_indx = find_student_indx(student_id, num_of_students, student_db);
 	
@@ -81,6 +124,12 @@ bool StArray::setExamGrade(int student_id, int course_num, int exam_grade) {
 	return 1;
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 bool StArray::setFactor(int course_num, int factor_val) {
 	int i;
 	int num_students=0;
@@ -93,6 +142,13 @@ bool StArray::setFactor(int course_num, int factor_val) {
 	}
 	return num_students > 0 ? 1 : 0;
 }
+
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 bool StArray::printStudent(int student_id)  {
 
 	int student_indx = find_student_indx(student_id, num_of_students, student_db);
@@ -100,12 +156,26 @@ bool StArray::printStudent(int student_id)  {
 	student_db[student_indx]->print();
 	return 1;
 }
+
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 void StArray::printAll()  {
 	int i;
 	for (i = 0; i < num_of_students; i++) {
 		printStudent(student_db[i]->getID());
 	}
 }
+
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 void StArray::resetStArray() {
 	int i;
 	for (i = 0; i < num_of_students; i++) {

@@ -4,7 +4,12 @@
 #include <string.h>
 #include "Course.h"
 
-
+/*
+  Function: 
+  Description:
+  Parameters:
+  Return value: 
+*/
 
 Course :: Course(int course_number,char* p_course_name,int num_of_exercises,double weight_hw):
 	course_number_(course_number),num_of_exercises_(num_of_exercises),weight_hw_(weight_hw)
@@ -20,16 +25,34 @@ Course :: Course(int course_number,char* p_course_name,int num_of_exercises,doub
 	p_course_name_ = p_2_course_name;
 };
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 Course::~Course() {
 	delete[] p_course_name_;
 	delete[] p_grades_hw_array_;
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 int Course::getNum() const {
 
 	return course_number_;
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 char* Course::getName() const  {
 	int len_course_name = strlen(p_course_name_);
 	char* p_2_course_name = new char[len_course_name + 1];
@@ -38,24 +61,54 @@ char* Course::getName() const  {
 	
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 int Course::getExamGrade()const{
 	return exam_grade_;
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 int Course::getHwGrade(int num_of_exercise) const{
 
 	if (num_of_exercise < 0 || num_of_exercise >= num_of_exercises_) return 0;
 	return p_grades_hw_array_[num_of_exercise];
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 int Course::getHwNum() const{
 	return num_of_exercises_;
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 double Course::getHwWeigh ()const{
 	return weight_hw_;
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 double Course::getHwAverage ()const{
 	double average = 0;
 	if(num_of_exercises_==0) return average;
@@ -69,6 +122,12 @@ double Course::getHwAverage ()const{
 	return average;
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 int Course::getCourseGrade() const{
 
 	double hw_average=getHwAverage();
@@ -77,12 +136,24 @@ int Course::getCourseGrade() const{
 	return 	(int)course_grade;
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 bool Course::setExamGrade(int exam_grade) {
 	if (exam_grade > 100 || exam_grade < 0) return false;
 	exam_grade_ = exam_grade;
 	return true;
 }
 
+/*
+  Function:
+  Description:
+  Parameters:
+  Return value:
+*/
 bool Course::setHwGrade(int exercise_num,int exercise_grade){
 if (exercise_num<0 || exercise_num>num_of_exercises_ ) return false;
 if (exercise_grade>100 || exercise_grade<0) 		   return false;
