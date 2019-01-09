@@ -176,6 +176,7 @@ bool Student::rem_Course(int course_num) {
 			if (p_cs_course_array_[i]->getNum() == course_num) {
 				delete[] p_cs_course_array_[i];
 				p_cs_course_array_[i] = NULL;
+				num_of_cs_courses_--;
 				return 1;
 			}
 		}
@@ -183,6 +184,7 @@ bool Student::rem_Course(int course_num) {
 			if (p_ee_course_array_[i]->getNum() == course_num) {
 				delete[] p_ee_course_array_[i];
 				p_ee_course_array_[i] = NULL;
+				num_of_cs_courses_--;
 				return 1;
 			}
 		}
@@ -224,5 +226,21 @@ void Student::print() const {
 	delete[]p_student_name;
 }
 
+
+Student::~Student()
+{
+	int i ;
+	for (i = 0 ; i < MAX_COURSE_NUM ; i++)
+	{
+		if (p_ee_course_array_[j] != NULL)
+		{
+			rem_Course(p_ee_course_array_[j]->getNum());
+		}
+		if (p_ee_course_array_[j] != NULL)
+		{
+			rem_Course(p_cs_course_array_[j]->getNum())
+		}
+	}
+}
 
 
