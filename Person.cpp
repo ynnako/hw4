@@ -6,10 +6,11 @@
 #include "Person.h"
 
 /*
-  Function: Person
-  Description: constructor , initial values for objects in Person class
-  Parameters:
-  Return value:
+  Function     : Person
+  Description  : constructor , initial values for objects in Person class
+  Parameters   : person_id	   - person id
+				 p_person_name - pointer to person name
+  Return value : None
 */
 Person ::Person(int person_id,char* p_person_name):
 	person_id_(person_id){
@@ -20,30 +21,30 @@ Person ::Person(int person_id,char* p_person_name):
 }
 
 /*
-  Function:
-  Description:
-  Parameters:
-  Return value:
+  Function     : Person
+  Description  : destructor for Course class , free dynamic allocations of objects
+  Parameters   : None
+  Return value : None
 */
 Person ::~Person() {
 	delete[] p_person_name_;
 }
 
 /*
-  Function:
-  Description:
-  Parameters:
-  Return value:
+  Function     : getID
+  Description  : return person id
+  Parameters   : None
+  Return value : person id
 */
 int Person::getID()const {
 	return person_id_;
 }
 
 /*
-  Function:
-  Description:
-  Parameters:
-  Return value:
+  Function	   : getName
+  Description  : returns a pointer to a clone of the person's name
+  Parameters   : None
+  Return value : None
 */
 char* Person::getName()const{
 	int len_person_name = strlen(p_person_name_);
