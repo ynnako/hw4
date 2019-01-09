@@ -98,9 +98,9 @@ bool Student::addEE_Course(EE_Course* p_ee_course) {
 bool Student::addCS_Course(CS_Course* p_cs_course) {
 	if (p_cs_course == NULL) return 0;
 	int first_free_pointer_ = first_free_pointer((Course**)p_cs_course_array_);
+	if ( course_already_exist(p_cs_course, (Course**)p_cs_course_array_) == 1 || first_free_pointer_ == -1) return false;
 	char* p_cs_course_name = p_cs_course->getName();
 	char* p_book_name = p_cs_course->getBook();
-	if ( course_already_exist(p_cs_course, (Course**)p_cs_course_array_) == 1 || first_free_pointer_ == -1) return false;
 	p_cs_course_array_[first_free_pointer_] = new CS_Course(p_cs_course->getNum(), p_cs_course_name, p_cs_course->getHwNum(), p_cs_course->getHwWeigh(), p_cs_course->isTakef(), p_book_name);
 	p_cs_course_array_[first_free_pointer_]->setExamGrade(p_cs_course->getExamGrade());/*exam grade*/
 	int i;
@@ -182,7 +182,7 @@ bool Student::rem_Course(int course_num) {
 	for (i = 0; i < MAX_COURSE_NUM; i++) {
 		if (p_cs_course_array_[i] != NULL) {
 			if (p_cs_course_array_[i]->getNum() == course_num) {
-				delete[] p_cs_course_array_[i];
+				delete p_cs_course_array_[i];
 				p_cs_course_array_[i] = NULL;
 				num_of_cs_courses_--;
 				return 1;
@@ -190,7 +190,7 @@ bool Student::rem_Course(int course_num) {
 		}
 		if (p_ee_course_array_[i] != NULL) {
 			if (p_ee_course_array_[i]->getNum() == course_num) {
-				delete[] p_ee_course_array_[i];
+				delete p_ee_course_array_[i];
 				p_ee_course_array_[i] = NULL;
 				num_of_cs_courses_--;
 				return 1;
@@ -246,7 +246,7 @@ Student::~Student()
 		}
 		if (p_ee_course_array_[i] != NULL)
 		{
-			rem_Course(p_cs_course_array_[i]->getNum())
+			rem_Course(p_cs_course_array_[i]->getNum());
 		}
 	}
 }

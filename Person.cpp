@@ -14,10 +14,15 @@
 */
 Person ::Person(int person_id,char* p_person_name):
 	person_id_(person_id){
-	int len_person_name = strlen(p_person_name);
-	char* p_2_person_name = new char[len_person_name + 1];
-	strcpy(p_2_person_name, p_person_name);
-	p_person_name_ = p_2_person_name;
+	if (p_person_name != NULL)
+	{
+		int len_person_name = strlen(p_person_name);
+		char* p_2_person_name = new char[len_person_name + 1];
+		strcpy(p_2_person_name, p_person_name);
+		p_person_name_ = p_2_person_name;
+	}
+	else p_person_name_ = NULL;
+	
 }
 
 /*
@@ -27,7 +32,8 @@ Person ::Person(int person_id,char* p_person_name):
   Return value : None
 */
 Person ::~Person() {
-	delete[] p_person_name_;
+	if(p_person_name_ != NULL) delete[] p_person_name_;
+
 }
 
 /*

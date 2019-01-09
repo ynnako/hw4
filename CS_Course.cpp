@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string.h>
 #include "CS_Course.h"
-
+using std::cout;
 
 /*
   Function     : CS_Course
@@ -20,10 +20,14 @@
 CS_Course :: CS_Course(int course_number, char* p_course_name, int num_of_exercises, double weight_hw, bool isTakef, char* p_book_name) :
 	Course(course_number,p_course_name, num_of_exercises, weight_hw),isTakef_(isTakef)
 	{
-	int len_book_name = strlen(p_book_name);
-	char* p_2_book_name = new char[len_book_name + 1];
-	strcpy(p_2_book_name,p_book_name);
-	p_book_name_ = p_2_book_name;
+	if (p_book_name != NULL)
+	{
+		int len_book_name = strlen(p_book_name);
+		char* p_2_book_name = new char[len_book_name + 1];
+		strcpy(p_2_book_name, p_book_name);
+		p_book_name_ = p_2_book_name;
+	}
+	else p_book_name_ = NULL;
 	};
 
 /*
@@ -33,7 +37,10 @@ CS_Course :: CS_Course(int course_number, char* p_course_name, int num_of_exerci
   Return value : None
 */
 CS_Course :: ~CS_Course() {
-	delete[] p_book_name_;
+	if (p_book_name_ != NULL) {
+		cout << "delete" << "\n";
+		delete[] p_book_name_;
+	}
 }
 
 /*

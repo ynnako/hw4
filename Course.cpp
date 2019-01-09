@@ -15,7 +15,7 @@
 */
 
 Course :: Course(int course_number,char* p_course_name,int num_of_exercises,double weight_hw):
-	course_number_(course_number),num_of_exercises_(num_of_exercises),weight_hw_(weight_hw)
+	course_number_(course_number) , num_of_exercises_(num_of_exercises) , weight_hw_(weight_hw) , exam_grade_(0)
 	{
 	int len_course_name = strlen(p_course_name);
 	char* p_2_course_name = new char[len_course_name + 1];
@@ -35,8 +35,8 @@ Course :: Course(int course_number,char* p_course_name,int num_of_exercises,doub
   Return value : None
 */
 Course::~Course() {
-	delete[] p_course_name_;
-	delete[] p_grades_hw_array_;
+	if (p_course_name_ != NULL) delete[] p_course_name_;
+	if (p_grades_hw_array_ != NULL) delete[] p_grades_hw_array_;
 }
 
 /*

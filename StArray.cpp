@@ -50,7 +50,7 @@ StArray::StArray() :
 */
 StArray::~StArray()
 {
-  resetStArray();
+
 }
 
 /*
@@ -62,7 +62,7 @@ StArray::~StArray()
 bool StArray::addStudent(int student_id, char* p_student_name)
 {
     if (num_of_students >= MAX_STUDENT_NUM || p_student_name == NULL || find_student_indx(student_id , num_of_students , student_db) < MAX_STUDENT_NUM ) return false;
-    Student* new_student = new Student(student_id , p_student_name);
+    Student *new_student = new Student(student_id , p_student_name);
     student_db[num_of_students] = new_student;
     num_of_students++;
     return true;
@@ -182,9 +182,9 @@ void StArray::printAll()  {
 */
 void StArray::resetStArray() {
 	int i , j;
-	for (i = 0; i < num_of_students; i++) 
-  {
-    delete[] student_db[i];
+	for (i = 0; i < num_of_students; i++) {
+	 // student_db[i]->~Student();
+    delete student_db[i];
 	}
 
 }
