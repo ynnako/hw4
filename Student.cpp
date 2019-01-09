@@ -244,7 +244,7 @@ Student::~Student()
 		{
 			rem_Course(p_ee_course_array_[i]->getNum());
 		}
-		if (p_ee_course_array_[i] != NULL)
+		if (p_cs_course_array_[i] != NULL)
 		{
 			rem_Course(p_cs_course_array_[i]->getNum());
 		}

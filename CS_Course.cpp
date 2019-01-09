@@ -38,7 +38,6 @@ CS_Course :: CS_Course(int course_number, char* p_course_name, int num_of_exerci
 */
 CS_Course :: ~CS_Course() {
 	if (p_book_name_ != NULL) {
-		cout << "delete" << "\n";
 		delete[] p_book_name_;
 	}
 }
