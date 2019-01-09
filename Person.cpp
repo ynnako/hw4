@@ -6,8 +6,8 @@
 #include "Person.h"
 
 /*
-  Function:
-  Description:
+  Function: Person
+  Description: constructor , initial values for objects in Person class
   Parameters:
   Return value:
 */

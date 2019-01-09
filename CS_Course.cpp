@@ -7,10 +7,15 @@
 
 
 /*
-  Function:
-  Description:
-  Parameters:
-  Return value:
+  Function     : CS_Course
+  Description  : constructor initial values for objects in CS_Course class 
+  Parameters   : course_number	  - course number    
+			     p_course_name    - pointer to course name
+			     num_of_exercises - number of hw exercises
+			     weight_hw        - weight of hw from whole grade
+			     isTakef          - if the hw is takef
+			     p_book_name      - pointer to book name
+  Return value : None
 */
 CS_Course :: CS_Course(int course_number, char* p_course_name, int num_of_exercises, double weight_hw, bool isTakef, char* p_book_name) :
 	Course(course_number,p_course_name, num_of_exercises, weight_hw),isTakef_(isTakef)
@@ -22,20 +27,20 @@ CS_Course :: CS_Course(int course_number, char* p_course_name, int num_of_exerci
 	};
 
 /*
-  Function:
-  Description:
-  Parameters:
-  Return value:
+  Function     : CS_Course
+  Description  : destructor
+  Parameters   : free the dynamic allocations
+  Return value : None
 */
 CS_Course :: ~CS_Course() {
 	delete[] p_book_name_;
 }
 
 /*
-  Function:
-  Description:
-  Parameters:
-  Return value:
+  Function     : setTakef
+  Description  : set the value of isTakef_
+  Parameters   : isTakef - 1 if hw if takef else 0
+  Return value : always 1
 */
 bool CS_Course::setTakef(bool isTakef){
 	isTakef_=isTakef;
@@ -43,10 +48,10 @@ bool CS_Course::setTakef(bool isTakef){
 }
 
 /*
-  Function:
-  Description:
-  Parameters:
-  Return value:
+  Function     : setBook
+  Description  : set the book name 
+  Parameters   : p_book_name- pointer to book name
+  Return value : None
 */
 void  CS_Course::setBook(char* p_book_name){
 	if (p_book_name_ != NULL) {
@@ -61,10 +66,10 @@ return;
 }
 
 /*
-  Function:
-  Description:
-  Parameters:
-  Return value:
+  Function     : getCourseGrade
+  Description  : return the course grade according to exam grade,hw grades and isTakef_ object
+  Parameters   : None
+  Return value : course grade' value between 0-100
 */
 int CS_Course::getCourseGrade() const {
 	double hw_average = getHwAverage();
@@ -78,20 +83,20 @@ int CS_Course::getCourseGrade() const {
 }
 
 /*
-  Function:
-  Description:
-  Parameters:
-  Return value:
+  Function     : isTakef
+  Description  : return if thw hw is takef 
+  Parameters   : None
+  Return value : 1 if hw is takef else 0
 */
 bool CS_Course:: isTakef() const {
 	return isTakef_;
 }
 
 /*
-  Function:
-  Description:
-  Parameters:
-  Return value:
+  Function     : getBook
+  Description  : returns a pointer to a clone of the book's name
+  Parameters   : None
+  Return value : char* pointer for book name
 */
 char* CS_Course::getBook() const {
 	int len_book_name = strlen(p_book_name_);
