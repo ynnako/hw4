@@ -50,7 +50,7 @@ StArray::StArray() :
 */
 StArray::~StArray()
 {
-
+  resetStArray();
 }
 
 /*
@@ -181,10 +181,10 @@ void StArray::printAll()  {
   Return value:
 */
 void StArray::resetStArray() {
-	int i , j;
-	for (i = 0; i < num_of_students; i++) {
-	 // student_db[i]->~Student();
-    delete student_db[i];
-	}
-
+  for (int i = 0; i < MAX_STUDENT_NUM; i++) {
+		if(student_db[i] != NULL)
+    {
+      delete student_db[i];
+      student_db[i] = NULL;
+    }
 }
