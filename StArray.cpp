@@ -9,10 +9,13 @@ using std::cout;
 
 
 /*
-  Function:
-  Description:
-  Parameters:
-  Return value:
+  Function: find_student_indx
+  Description: gets a sutdent's id and returns it's index in the array
+  Parameters:   student_id - the student's id
+                num_of_students - how many students are stored in the array
+                student_db - the array of the sutdents
+  Return value: if the student exists the return value would be his index in the array
+                if the student dosent exist the retur value would be a number greater than the array's limits
 */
 int find_student_indx (int student_id , int num_of_students, Student *student_db[])
 {
@@ -47,6 +50,7 @@ StArray::StArray() :
 */
 StArray::~StArray()
 {
+  resetStArray();
 }
 
 /*
@@ -177,10 +181,10 @@ void StArray::printAll()  {
   Return value:
 */
 void StArray::resetStArray() {
-	int i;
+	int i , j;
 	for (i = 0; i < num_of_students; i++) {
-		delete[] student_db[i];
-		student_db[i] = NULL;/*need to check that*/
+	  student_db[i]->~Student();
+    delete[] student_db[i];
 	}
 
 }

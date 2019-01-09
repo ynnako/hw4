@@ -15,6 +15,7 @@ private:
 
 public:
 	Student(int person_id, char* p_person_name);
+	~Student();
 	int getCourseCnt()const;
 	bool addEE_Course(EE_Course* p_ee_course);
 	bool addCS_Course(CS_Course* p_cs_course);
