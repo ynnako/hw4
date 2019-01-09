@@ -14,7 +14,15 @@ using std::cout;
   Return value:
 */
 Student::Student(int person_id, char* p_person_name):
-	Person(person_id, p_person_name), num_of_ee_courses_(0), num_of_cs_courses_(0), p_ee_course_array_{ NULL }, p_cs_course_array_{ NULL }{}
+	Person(person_id, p_person_name), num_of_ee_courses_(0), num_of_cs_courses_(0)
+	{
+		int i ;
+		for (i = 0 ; i < MAX_COURSE_NUM ; i++)
+		{
+			p_ee_course_array_[i] = NULL;
+			p_cs_course_array_[i] = NULL;
+		}
+	}
 
 /*
   Function:
@@ -232,13 +240,13 @@ Student::~Student()
 	int i ;
 	for (i = 0 ; i < MAX_COURSE_NUM ; i++)
 	{
-		if (p_ee_course_array_[j] != NULL)
+		if (p_ee_course_array_[i] != NULL)
 		{
-			rem_Course(p_ee_course_array_[j]->getNum());
+			rem_Course(p_ee_course_array_[i]->getNum());
 		}
-		if (p_ee_course_array_[j] != NULL)
+		if (p_ee_course_array_[i] != NULL)
 		{
-			rem_Course(p_cs_course_array_[j]->getNum())
+			rem_Course(p_cs_course_array_[i]->getNum())
 		}
 	}
 }
