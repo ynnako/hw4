@@ -26,7 +26,7 @@ Person ::Person(int person_id,char* p_person_name):
 }
 
 /*
-  Function     : Person
+  Function     : ~Person
   Description  : destructor for Course class , free dynamic allocations of objects
   Parameters   : None
   Return value : None
