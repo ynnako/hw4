@@ -182,8 +182,8 @@ void StArray::printAll()  {
 */
 void StArray::resetStArray() {
 	int i , j;
-	for (i = 0; i < num_of_students; i++) {
-	  student_db[i]->~Student();
+	for (i = 0; i < num_of_students; i++) 
+  {
     delete[] student_db[i];
 	}
 
