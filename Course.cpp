@@ -5,10 +5,13 @@
 #include "Course.h"
 
 /*
-  Function: 
-  Description:
-  Parameters:
-  Return value: 
+  Function	   : Course
+  Description  : constructor for Course class, initial values for objects in at Course class
+  Parameters   : course_number	    - course number
+				 p_course_name	    - pointer to course name
+			     num_of_exercises	- number of hw exercises
+			     weight_hw		    - weight of hw from whole grade
+  Return value : None
 */
 
 Course :: Course(int course_number,char* p_course_name,int num_of_exercises,double weight_hw):
@@ -26,10 +29,10 @@ Course :: Course(int course_number,char* p_course_name,int num_of_exercises,doub
 };
 
 /*
-  Function:
-  Description:
-  Parameters:
-  Return value:
+  Function	   : ~Course
+  Description  : destructor for Course class
+  Parameters   : None
+  Return value : None
 */
 Course::~Course() {
 	delete[] p_course_name_;
@@ -37,10 +40,10 @@ Course::~Course() {
 }
 
 /*
-  Function:
-  Description:
-  Parameters:
-  Return value:
+  Function     : getNum
+  Description  : get the course number
+  Parameters   : None
+  Return value : course number
 */
 int Course::getNum() const {
 
@@ -48,10 +51,10 @@ int Course::getNum() const {
 }
 
 /*
-  Function:
-  Description:
-  Parameters:
-  Return value:
+  Function    : getName
+  Description : returns a pointer to a clone of the course's name
+  Parameters  : None
+  Return value: char * pointer for course name
 */
 char* Course::getName() const  {
 	int len_course_name = strlen(p_course_name_);
@@ -62,20 +65,20 @@ char* Course::getName() const  {
 }
 
 /*
-  Function:
-  Description:
-  Parameters:
-  Return value:
+  Function     : getExamGrade
+  Description  : return exam grade
+  Parameters   : None
+  Return value : exam grade , value between 0-100
 */
 int Course::getExamGrade()const{
 	return exam_grade_;
 }
 
 /*
-  Function:
-  Description:
-  Parameters:
-  Return value:
+  Function     : getHwGrade
+  Description  : return the grade for specific hw exercise   
+  Parameters   : num_of_exercise
+  Return value : grade of hw num_of_exercise, value between 0-100
 */
 int Course::getHwGrade(int num_of_exercise) const{
 
@@ -84,30 +87,30 @@ int Course::getHwGrade(int num_of_exercise) const{
 }
 
 /*
-  Function:
-  Description:
-  Parameters:
-  Return value:
+  Function     : getHwNum
+  Description  : return the number of hw exercise
+  Parameters   : None
+  Return value : number of hw exercises
 */
 int Course::getHwNum() const{
 	return num_of_exercises_;
 }
 
 /*
-  Function:
-  Description:
-  Parameters:
-  Return value:
+  Function     : getHwWeigh
+  Description  : return the weigth of hw from the whole grade
+  Parameters   : None
+  Return value : weight of the hw , value between 0-1
 */
 double Course::getHwWeigh ()const{
 	return weight_hw_;
 }
 
 /*
-  Function:
-  Description:
-  Parameters:
-  Return value:
+  Function     : getHwAverage
+  Description  : return thr average of the hw exercise
+  Parameters   : None
+  Return value : if no hw return 0 else the average , value between 0-100
 */
 double Course::getHwAverage ()const{
 	double average = 0;
@@ -123,10 +126,10 @@ double Course::getHwAverage ()const{
 }
 
 /*
-  Function:
-  Description:
-  Parameters:
-  Return value:
+  Function     : getCourseGrade
+  Description  : calculate the course grade according the exam and he grades
+  Parameters   : None
+  Return value : course grade , value between 0-100
 */
 int Course::getCourseGrade() const{
 
@@ -137,10 +140,10 @@ int Course::getCourseGrade() const{
 }
 
 /*
-  Function:
-  Description:
-  Parameters:
-  Return value:
+  Function     : setExamGrade
+  Description  : set the exam grade 
+  Parameters   : exam grade
+  Return value : 1 if succses else 0
 */
 bool Course::setExamGrade(int exam_grade) {
 	if (exam_grade > 100 || exam_grade < 0) return false;
@@ -149,10 +152,11 @@ bool Course::setExamGrade(int exam_grade) {
 }
 
 /*
-  Function:
-  Description:
-  Parameters:
-  Return value:
+  Function     : setExamGrade
+  Description  : set a grade for specific hw exercise
+  Parameters   : exercise_num   - number of exercise
+			     exercise_grade - grade of the exercise
+  Return value : 1 if succses else 0
 */
 bool Course::setHwGrade(int exercise_num,int exercise_grade){
 if (exercise_num<0 || exercise_num>num_of_exercises_ ) return false;
