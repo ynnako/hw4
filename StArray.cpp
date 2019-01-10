@@ -194,7 +194,7 @@ bool StArray::printStudent(int student_id)  {
 void StArray::printAll()  {
 	int i;
 	for (i = 0; i < num_of_students; i++) {
-		printStudent(student_db[i]->getID());
+		if(student_db[i] != NULL) printStudent(student_db[i]->getID());
 	}
 }
 
@@ -206,10 +206,11 @@ void StArray::printAll()  {
 */
 void StArray::resetStArray() {
   for (int i = 0; i < MAX_STUDENT_NUM; i++) {
-		if(student_db[i] != NULL)
+	if(student_db[i] != NULL)
     {
       delete student_db[i];
       student_db[i] = NULL;
     }
   }
+  num_of_students = 0;
 }
