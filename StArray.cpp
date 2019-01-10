@@ -181,6 +181,7 @@ bool StArray::printStudent(int student_id)  {
 
 	int student_indx = find_student_indx(student_id, num_of_students, student_db);
 	if (student_indx == MAX_STUDENT_NUM) return 0;
+	if (student_db[student_indx] == NULL) return 0;
 	student_db[student_indx]->print();
 	return 1;
 }
