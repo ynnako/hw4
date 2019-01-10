@@ -1,0 +1,14 @@
+
+
+#!/bin/bash
+
+if (($# != 1));then
+echo unvalid input
+else
+var=$1
+num_of_char=`echo $var | wc -c`
+(( loop= $num_of_char -2 )) 
+  for i in ` seq 0 $loop` ; do
+            echo ${var:$i:1} 
+        done
+fi

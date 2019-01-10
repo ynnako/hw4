@@ -159,7 +159,7 @@ bool Course::setExamGrade(int exam_grade) {
   Return value : 1 if succses else 0
 */
 bool Course::setHwGrade(int exercise_num,int exercise_grade){
-if (exercise_num<0 || exercise_num>num_of_exercises_ ) return false;
+if (exercise_num<0 || exercise_num>=num_of_exercises_ ) return false;
 if (exercise_grade>100 || exercise_grade<0) 		   return false;
 p_grades_hw_array_[exercise_num]=exercise_grade;
 
